@@ -6,6 +6,7 @@ const LeaderBoard = require("../models/LeaderBoard");
 router.get("/", (req, res) => {
   LeaderBoard.find()
     .sort({ score: -1 })
+    .limit(10)
     .exec((err, leaderboards) => {
       if (err) {
         console.log(err);
