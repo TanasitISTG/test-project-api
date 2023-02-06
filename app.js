@@ -7,7 +7,9 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const leaderboardsRouter = require('./routes/leaderboards');
 const uri = process.env.MONGODB_URI;
+const cors = require('cors');
 
+app.use(cors());
 mongoose.Promise = global.Promise;
 mongoose.set('strictQuery', false);
 mongoose.connect(uri)
