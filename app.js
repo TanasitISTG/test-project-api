@@ -3,12 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config();
 const mongoose = require('mongoose');
 const leaderboardsRouter = require('./routes/leaderboards');
+const uri = process.env.MONGODB_URI;
 
 mongoose.Promise = global.Promise;
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb+srv://tana:1234@203.kfimzt1.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect(uri)
                 .then(() => console.log('connection succesful'))
                 .catch((err) => console.error(err));
 
